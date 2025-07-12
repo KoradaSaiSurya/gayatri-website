@@ -39,7 +39,11 @@ const handleSubmit = async (e) => {
 
   try {
     // 2️⃣ Send data to backend
-    const res = await axios.post('http://localhost:5000/admission-form', form);
+   const res =await axios.post('https://gayatri-website.onrender.com/admission-form', form);
+
+
+
+
 
     // 3️⃣ On success, update message
     setAlertMsg(res.data.message );
@@ -57,6 +61,7 @@ const handleSubmit = async (e) => {
 
   } catch (err) {
     // 5️⃣ If error occurs    
+    console.log("AXIOS ERROR:", err);
     setAlertMsg("❌ Something went wrong! Please try again.");
     setAlertType("error");
   }
