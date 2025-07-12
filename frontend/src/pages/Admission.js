@@ -39,7 +39,9 @@ const handleSubmit = async (e) => {
 
   try {
     // 2️⃣ Send data to backend
-   const res =await axios.post('https://gayatri-website.onrender.com/admission-form', form);
+   const res =await axios.post('https://gayatri-backend.onrender.com/admission-form', form);
+
+
 
 
 

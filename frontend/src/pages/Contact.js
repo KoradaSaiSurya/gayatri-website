@@ -34,6 +34,8 @@ function Contact() {
 
 
 
+
+
      setAlertMsg(res.data.message );
     setAlertType("success");
 
