@@ -1,22 +1,38 @@
-// server.js or index.js
 const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
-console.log('Env loaded:', process.env.EMAIL_USER, process.env.EMAIL_PASS);
-
 const app = express();
-app.use(cors());
+
+// ✅ Dynamic CORS for both frontend URLs
+const allowedOrigins = [
+  'https://gayatri-website.vercel.app',
+  'https://gayatri-frontend.onrender.com'
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS not allowed'));
+    }
+  },
+  methods: ['GET', 'POST'],
+}));
+
+// Optional: Preflight
+app.options('*', cors());
+
 app.use(express.json());
 
+// 💌 Contact Form API
 app.post('/send-message', async (req, res) => {
   const { name, email, message } = req.body;
+  console.log("📥 Contact form data received:", req.body);
 
   try {
-    console.log('Sending email to:', process.env.EMAIL_USER);
-    console.log('From user:', email);
-
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -26,11 +42,11 @@ app.post('/send-message', async (req, res) => {
     });
 
     const mailOptions = {
-      from: email,
+      from: email, // optional: set to process.env.EMAIL_USER for safety
       to: process.env.EMAIL_USER,
       subject: `New Message from ${name}`,
       html: `
-        <h2>New Message from School Website</h2>
+        <h2>New Message from Website</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Message:</strong> ${message}</p>
@@ -38,22 +54,19 @@ app.post('/send-message', async (req, res) => {
     };
 
     await transporter.sendMail(mailOptions);
-
+    console.log("✅ Contact Email sent!");
     res.json({ success: true, message: 'Message sent successfully!' });
   } catch (err) {
-    console.error('❌ Error sending email:', err);
-    res.status(500).json({ success: false, message: 'Failed to send email.' });
+    console.error("❌ Failed to send contact email:", err);
+    res.status(500).json({ success: false, message: 'Failed to send message.' });
   }
 });
 
+// 🎓 Admission Form API
+app.post('/admission-form', async (req, res) => {
+  const { studentName, parentName, className, phone, email, message } = req.body;
+  console.log("📩 Admission form received:", req.body);
 
-
-
-app.post('/admission-form' , async(req,res)=>{
-  const {studentName, parentName, className, phone, email, message } =req.body;
-
-
- 
   try {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -64,7 +77,7 @@ app.post('/admission-form' , async(req,res)=>{
     });
 
     const mailOptions = {
-      from: email,
+      from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER,
       subject: `🎓 New Admission Request from ${parentName}`,
       html: `
@@ -79,19 +92,23 @@ app.post('/admission-form' , async(req,res)=>{
     };
 
     await transporter.sendMail(mailOptions);
-    res.json({ success: true, message: '  Admission form submitted successfully!' });
+    console.log("✅ Admission Email sent!");
+    res.json({ success: true, message: 'Admission form submitted successfully!' });
   } catch (err) {
-    console.error('❌ Error sending admission email:', err);
+    console.error("❌ Failed to send admission form:", err);
     res.status(500).json({ success: false, message: 'Failed to send form. Try again later.' });
   }
 });
 
+// 🌍 Root
 app.get('/', (req, res) => {
-  res.send('✅ Gayatri backend is live!');
+  res.send("🚀 Gayatri Website Backend is Live!");
 });
 
-app.listen(5000, () => {
-  console.log('Server running on http://localhost:5000');
+// 🛡️ Port Setup
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`✅ Server running on http://localhost:${PORT}`);
 });
 
 
