@@ -30,7 +30,9 @@ function Contact() {
   setAlertType("info");
 
   try {
-    const res = await axios.post('http://localhost:5000/send-message', form);
+    const res = await axios.post('https://gayatri-backend.onrender.com/send-message', form);
+
+
 
      setAlertMsg(res.data.message );
     setAlertType("success");
