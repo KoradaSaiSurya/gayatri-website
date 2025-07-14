@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Maps from './Maps';
 
 function Contact() {
 
@@ -113,6 +114,8 @@ function Contact() {
 
             </div>
           </div>
+
+          <Maps />
           </div>
         );
       };
