@@ -5,24 +5,28 @@ require('dotenv').config();
 
 const app = express();
 
-// ✅ Dynamic CORS for both frontend URLs
+// ✅ CORS allowed domains
 const allowedOrigins = [
   'https://gayatri-website.vercel.app',
-  'https://gayatri-frontend.onrender.com'
+  'https://gayatri-frontend.onrender.com',
+  'http://localhost:3000', // ✅ Add this for development testing
 ];
 
+
+
+// ✅ CORS Middleware
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('CORS not allowed'));
+      console.error("❌ Blocked by CORS:", origin);
+      callback(new Error('Not allowed by CORS'));
     }
   },
   methods: ['GET', 'POST'],
+  credentials: true
 }));
-
-// Optional: Preflight
 
 app.use(express.json());
 
@@ -41,7 +45,7 @@ app.post('/send-message', async (req, res) => {
     });
 
     const mailOptions = {
-      from: email, // optional: set to process.env.EMAIL_USER for safety
+      from: process.env.EMAIL_USER, // safer than using user email
       to: process.env.EMAIL_USER,
       subject: `New Message from ${name}`,
       html: `
@@ -56,7 +60,7 @@ app.post('/send-message', async (req, res) => {
     console.log("✅ Contact Email sent!");
     res.json({ success: true, message: 'Message sent successfully!' });
   } catch (err) {
-    console.error("❌ Failed to send contact email:", err);
+    console.error("❌ Contact form error:", err);
     res.status(500).json({ success: false, message: 'Failed to send message.' });
   }
 });
@@ -94,22 +98,18 @@ app.post('/admission-form', async (req, res) => {
     console.log("✅ Admission Email sent!");
     res.json({ success: true, message: 'Admission form submitted successfully!' });
   } catch (err) {
-    console.error("❌ Failed to send admission form:", err);
+    console.error("❌ Admission form error:", err);
     res.status(500).json({ success: false, message: 'Failed to send form. Try again later.' });
   }
 });
 
-// 🌍 Root
+// 🌍 Root route
 app.get('/', (req, res) => {
   res.send("🚀 Gayatri Website Backend is Live!");
 });
 
-// 🛡️ Port Setup
+// 🛡️ Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`✅ Server running on http://localhost:${PORT}`);
 });
-
-
-
-
