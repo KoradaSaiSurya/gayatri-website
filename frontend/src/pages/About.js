@@ -1,5 +1,5 @@
 import React from 'react';
-import Maps from './Maps';
+// import Maps from './Maps';
 
 const About = () => {
   return (
@@ -74,8 +74,6 @@ const About = () => {
         </ul>
       </section>
     </div>
-
-    <Maps />
     </div>
   );
 };

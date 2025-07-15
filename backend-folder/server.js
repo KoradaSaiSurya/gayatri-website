@@ -6,11 +6,6 @@ require('dotenv').config();
 const app = express();
 
 // ✅ CORS allowed domains
-const allowedOrigins = [
-  'https://gayatri-website.vercel.app',
-  'https://gayatri-frontend.onrender.com',
-  'http://localhost:3000', // ✅ Add this for development testing
-];
 
 
 
