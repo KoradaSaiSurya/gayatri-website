@@ -39,7 +39,7 @@ const announcements = [
       <section className="hero">
         <img className="school-img" src='sri chaitanya school.jpg' alt='img' />
         <div className="img-text">
-          <h1>Welcome to Sri Gayathri High School</h1>
+          <h1>Welcome To Sri Gayathri School</h1>
           <p>Empowering Young Minds for a Brighter Future</p>
           <Link to='/admission' > <button className="admission-btn">Admissions Open 2025</button> </Link>
         </div>
