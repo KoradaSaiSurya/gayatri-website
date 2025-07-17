@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -6,38 +6,48 @@ import { useNavigate } from 'react-router-dom';
 function Login() {
   const [form, setForm] = useState({ email: '', password: '' });
   const [msg, setMsg] = useState('');
-  const { setUser } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  // ✅ Redirect if already logged in
+  useEffect(() => {
+    if (user?.token) {
+      navigate('/faculty/add'); // 👉 change this route as needed
+    }
+  }, [user, navigate]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const adminEmail = "admin@gayathri.com";
 
-const adminEmail = "admin@gayathri.com"; // 👈 your choice
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("http://localhost:5000/api/auth/login", form);
 
-const handleLogin = async (e) => {
-  e.preventDefault();
-  try {
-    const res = await axios.post("http://localhost:5000/api/auth/login", form);
+      if (res.data.email !== adminEmail) {
+        return setMsg("Only admin can login!");
+      }
 
-    if (res.data.email !== adminEmail) {
-      return setMsg("Only admin can login!");
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("username", res.data.username);
+      localStorage.setItem("email", res.data.email);
+      localStorage.setItem("isFacultyAdmin", "true");
+
+      setUser({
+        username: res.data.username,
+        token: res.data.token,
+        email: res.data.email,
+      });
+
+      navigate('/faculty/add'); // handled by useEffect now
+
+    } catch (err) {
+      setMsg(err.response.data.msg);
     }
-
-    localStorage.setItem("token", res.data.token);
-    localStorage.setItem("username", res.data.username);
-    localStorage.setItem("email", res.data.email); // 👈 store email too
-    setUser({ username: res.data.username, token: res.data.token, email: res.data.email });
-
-    localStorage.setItem("isFacultyAdmin", "true"); // 👈 persist session
-// navigate("/faculty/add");
-
-  } catch (err) {
-    setMsg(err.response.data.msg);
-  }
-};
-
+  };
 
   return (
     <div className="form-box">
@@ -53,3 +63,4 @@ const handleLogin = async (e) => {
 }
 
 export default Login;
+
