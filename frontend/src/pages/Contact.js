@@ -78,7 +78,7 @@ function Contact() {
           <p>🕒 Mon - Sat: 9 AM - 4 PM</p>
         </div>
 
-        {/* Contact Form */}
+        {/* Contact Forrm */}
               <form className="contact-form" onSubmit={handleSubmit}>
         <h2>Send a Message</h2>
 

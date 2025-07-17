@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import Toppers from './Toppers';
 import Why from './Why';
 import CampusLife from './CampusLife';
-// import Faculty from './Faculty';
 import Admission from './Admission';
-// import Enquiry from '../components/Enquiry';
 import Contact from './Contact';
 import Facilities from './Facilities';
 
@@ -58,6 +56,8 @@ const announcements = [
           <p className='leader-para'>He is the principal of the school who strongly believes in holistic development, academic excellence, and nurturing every child's potential with care and discipline. His leadership inspires both students and staff to reach their full potential.</p>
         </div>
       </section>
+
+
 
 
 

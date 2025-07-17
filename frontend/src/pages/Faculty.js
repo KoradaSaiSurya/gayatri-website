@@ -1,116 +1,69 @@
-import React from 'react';
-
-const facultyData = [
-  {
-    name: "Mr. Rama Krishna",
-    subject: "Mathematics",
-    department: "Senior Faculty",
-    qualification: "M.Sc, B.Ed",
-    experience: "12 Years",
-    specialization: "Algebra & Geometry"
-  },
-  {
-    name: "Ms. Sravani Devi",
-    subject: "Science",
-    department: "Physics",
-    qualification: "M.Sc, B.Ed",
-    experience: "8 Years",
-    specialization: "Mechanics & Experiments"
-  },
-  {
-    name: "Mr. Naresh Babu",
-    subject: "English",
-    department: "Literature",
-    qualification: "MA English, B.Ed",
-    experience: "10 Years",
-    specialization: "Grammar & Communication"
-  },
-  {
-    name: "Mrs. Haritha",
-    subject: "Social Studies",
-    department: "History",
-    qualification: "MA History, B.Ed",
-    experience: "9 Years",
-    specialization: "Civics & Indian History"
-  },
-  {
-    name: "Mr. Rama Krishna",
-    subject: "Mathematics",
-    department: "Senior Faculty",
-    qualification: "M.Sc, B.Ed",
-    experience: "12 Years",
-    specialization: "Algebra & Geometry"
-  },
-  {
-    name: "Ms. Sravani Devi",
-    subject: "Science",
-    department: "Physics",
-    qualification: "M.Sc, B.Ed",
-    experience: "8 Years",
-    specialization: "Mechanics & Experiments"
-  },
-  {
-    name: "Mr. Naresh Babu",
-    subject: "English",
-    department: "Literature",
-    qualification: "MA English, B.Ed",
-    experience: "10 Years",
-    specialization: "Grammar & Communication"
-  },
-  {
-    name: "Mrs. Haritha",
-    subject: "Social Studies",
-    department: "History",
-    qualification: "MA History, B.Ed",
-    experience: "9 Years",
-    specialization: "Civics & Indian History"
-  }
-];
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Faculty = () => {
- return (
-  <div className="faculty-table-page">
-    <h1 className="faculty-title">🎓 Meet Our Faculty</h1>
-    <p className="faculty-subtext">Highly qualified, experienced & passionate educators who shape the future.</p>
+  const [facultyList, setFacultyList] = useState([]);
+  const navigate = useNavigate();
 
-    <div className="faculty-table-container">
-      <div className="faculty-row faculty-header">
-        <div>Name</div>
-        <div>Subject</div>
-        <div>Department</div>
-        <div>Qualification</div>
-        <div>Experience</div>
-        <div>Specialization</div>
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem("facultyList")) || [];
+    setFacultyList(storedData);
+  }, []);
+
+  const handleAddFacultyClick = () => {
+    const token = localStorage.getItem("token");
+    const email = localStorage.getItem("email");
+
+    if (token && email === "admin@gayatri.com") {
+      navigate('/faculty/add');
+    } else {
+      navigate('/login');
+    }
+  };
+
+  return (
+    <div className="faculty-table-page">
+      <h1 className="faculty-title" onClick={handleAddFacultyClick}>
+        🎓 Meet Our Faculty
+      </h1>
+      <p className="faculty-subtext">
+        Highly qualified, experienced & passionate educators who shape the future.
+      </p>
+
+      {/* Desktop Table */}
+      <div className="faculty-table-container">
+        <div className="faculty-row faculty-header">
+          <div>S.No</div>
+          <div>Name</div>
+          <div>Subject</div>
+          <div>Qualification</div>
+          <div>Experience</div>
+        </div>
+
+        {facultyList.map((f, index) => (
+          <div className="faculty-row" key={index}>
+            <div>{index + 1}</div>
+            <div>{f.facultyName}</div>
+            <div>{f.subjectName}</div>
+            <div>{f.qualification}</div>
+            <div>{f.experience}</div>
+          </div>
+        ))}
       </div>
 
-      {facultyData.map((f, index) => (
-        <div className="faculty-row" key={index}>
-          <div>{f.name}</div>
-          <div>{f.subject}</div>
-          <div>{f.department}</div>
-          <div>{f.qualification}</div>
-          <div>{f.experience}</div>
-          <div>{f.specialization}</div>
-        </div>
-      ))}
+      {/* Mobile Cards */}
+      <div className="faculty-cards-mobile">
+        {facultyList.map((f, index) => (
+          <div key={index} className="faculty-card">
+            <p><strong>Name: </strong> {f.facultyName}</p>
+            <p><strong>Subject:</strong> {f.subjectName}</p>
+            <p><strong>Qualification:</strong> {f.qualification}</p>
+            <p><strong>Experience:</strong> {f.experience}</p>
+          </div>
+        ))}
+      </div>
     </div>
-
-    {/* Mobile view cards */}
-    <div className="faculty-cards-mobile">
-      {facultyData.map((f, index) => (
-        <div className="faculty-card" key={index}>
-          <h3>{f.name}</h3>
-          <p><strong>Subject:</strong> {f.subject}</p>
-          <p><strong>Department:</strong> {f.department}</p>
-          <p><strong>Qualification:</strong> {f.qualification}</p>
-          <p><strong>Experience:</strong> {f.experience}</p>
-          <p><strong>Specialization:</strong> {f.specialization}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
+  );
 };
 
 export default Faculty;

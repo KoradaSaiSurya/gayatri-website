@@ -401,8 +401,8 @@ code {
   }
 
   .admission-btn {
-    padding: 12px 16px;
-    font-size: 14px;
+    padding: 12px 20px;
+    font-size: 12px;
     top: 20px;
     position: relative;
   }
@@ -1435,6 +1435,13 @@ code {
   
 }
  
+/* _______________________________________________________________________________________________________________________ */
+
+
+
+
+
+
 
 
 
@@ -2428,119 +2435,450 @@ blockquote:hover {
 /* ______________________________________________________________________________________ */
 
 
-
-
-
+.faculty-cards-mobile {
+  display: none;
+}
 
 .faculty-table-page {
-  padding: 80px 20px;
-  background: linear-gradient(to right, #f9f9f9, #e6f2ff);
+  padding: 60px 15px;
+  background: linear-gradient(to right, #f7faff, #eaf4ff);
   font-family: 'Segoe UI', sans-serif;
   text-align: center;
 }
 
 .faculty-title {
-  font-size: 36px;
-  font-weight: bold;
+  font-size: 28px;
+  font-weight: 700;
   color: #004080;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   margin-top: 100px;
 }
 
+.faculty-title:hover{
+  color: #0470db;
+}
+
 .faculty-subtext {
-  font-size: 18px;
-  color: #555;
-  margin-bottom: 40px;
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 25px;
 }
 
 .faculty-table-container {
-  max-width: 1200px;
+  max-width: 900px;
   margin: auto;
   display: grid;
-  gap: 12px;
+  gap: 10px;
 }
 
 .faculty-row {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  background-color: white;
-  padding: 18px 12px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: 0.3s ease;
+  grid-template-columns: repeat(5, 1fr); /* changed to 4 columns */
+  background-color: #fff;
+  padding: 12px 8px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease;
   align-items: center;
 }
 
 .faculty-row:hover {
-  background: #e3f2fd;
-  transform: translateY(-3px);
+  background: #e6f2ff;
+  transform: translateY(-2px);
 }
 
 .faculty-header {
   background-color: #004080;
   color: white;
   font-weight: bold;
-  font-size: 17px;
   text-transform: uppercase;
   box-shadow: none;
 }
 
+.faculty-header:hover{
+  background-color: #004080;
+}
+
+
+
 .faculty-row div {
-  padding: 8px 10px;
+  padding: 6px 10px;
   font-size: 16px;
   word-break: break-word;
 }
 
-
-
-.faculty-cards-mobile {
-  display: none; /* hidden on desktop */
+/* Button Style */
+.faculty-btn {
+  background-color: #004080;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
-/* Mobile styles */
+.faculty-btn:hover {
+  background-color: #002f5f;
+}
 @media screen and (max-width: 768px) {
-  .faculty-row,
-  .faculty-header {
-    display: none; /* hide table view */
+  .faculty-header,
+  .faculty-row {
+    display: none;
   }
 
-  .faculty-title {
-    font-size: 22px;
-    margin-top: 30px;
-    
-  }
-
-  .faculty-subtext {
-    font-size: 13px;
-  }
-  
   .faculty-cards-mobile {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding: 10px;
+    gap: 18px;
+    padding: 25px;
   }
 
   .faculty-card {
-    background: #ffffff;
+    background: linear-gradient(to right, #f8fbff, #edf4ff);
+    border-left: 4px solid #004080;
     border-radius: 12px;
-    padding: 18px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-    text-align: left;
+    padding: 16px 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease;
   }
 
-  .faculty-card h3 {
-    font-size: 15px;
-    color: #004080;
-    margin-bottom: 10px;
+  .faculty-card:hover {
+    transform: translateY(-3px);
   }
 
   .faculty-card p {
+    display: flex;
+    /* justify-content: space-around; */
+    text-align: left;
+    margin: 6px 0;
     font-size: 12px;
-    margin: 4px 0;
+    font-weight: 500;
     color: #333;
   }
+
+  .faculty-card p strong {
+    color: #004080;
+    font-weight: 600;
+    width: 120px;
+  }
+
+  .faculty-title {
+    font-size: 24px;
+    margin-top: 60px;
+    color: #004080;
+  }
+
+  .faculty-subtext {
+    font-size: 12px;
+    margin-bottom: 20px;
+    color: #444;
+  }
+
+  .faculty-btn {
+    font-size: 14px;
+    padding: 10px 18px;
+    background-color: #004080;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-top: 16px;
+    cursor: pointer;
+  }
+
+  .faculty-btn:hover {
+    background-color: #003060;
+  }
 }
+
+
+
+
+/* ______________________________________________________________________________________________________________________________________ */
+
+
+
+
+
+
+.faculty-btn {
+  background-color: #004080;
+  color: white;
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 3;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 50px;
+}
+
+.faculty-btn:hover {
+  background: #2b4bef;
+  transform: scale(1.07);
+  box-shadow: 0 0 15px #b4beea, 0 0 10px #465af1;
+  color: white;
+}
+
+
+
+/* _______________________________________________________________________________________________________________________________________________________ */
+
+
+
+
+
+
+.add-faculty-page {
+  /* padding: 60px 20px; */
+  text-align: center;
+  /* background: linear-gradient(to right, #f0f8ff, #e6f7ff); */
+  font-family: 'Segoe UI', sans-serif;
+  padding-top: 100px;
+}
+
+.add-faculty-page h1 {
+  font-size: 30px;
+  color: #025712;
+  margin-bottom: 10px;
+  position: relative;
+  left: 50%;
+}
+
+.add-faculty-subtext{
+  font-size: 15px;
+  margin: 0 auto 35px; 
+  max-width: 400px;
+  color: #1f1d1d;
+  margin-bottom: 60px;
+  line-height: 1.6;
+  position: relative;
+  left: 50%;
+}
+
+
+
+.add-faculty-form-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #025712;
+}
+
+.add-faculty-form label {
+  align-self: flex-start;
+  font-weight: 600;
+  color: #333;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 15px;
+}
+.faculty-form-title {
+  font-size: 15px;
+  margin-bottom: 20px;
+  color: #025712;
+}
+
+.add-faculty-form label {
+  align-self: flex-start;
+  font-weight: 600;
+  color: #333;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 15px;
+}
+
+
+.add-faculty-form {
+  max-width: 500px;
+  margin: auto;
+  background-color: #ffffff;
+  padding: 50px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-faculty-form input,
+.add-faculty-form textarea {
+  width: 100%;
+  padding: 10px  10px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 13px;
+  transition: border-color 0.3s ease;
+}
+
+.add-faculty-form input:focus,
+.add-faculty-form textarea:focus {
+  border-color: #025712;
+  outline: none;
+}
+
+.add-faculty-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.add-faculty-form button {
+  background-color: #025712;
+  color: #fff;
+  padding: 14px;
+  font-size: 17px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 103.9%;
+  margin-top: 10px;
+}
+
+.add-faculty-form button:hover {
+  background-color: #04791a;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 768px) and ( max-width: 1200px) {
+
+
+     .add-faculty-page{
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: -200px;
+     }
+
+
+  .add-faculty-form {
+    width: 100%;
+    padding: 70px;
+    gap: 1px;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    /* margin:100px; */
+  }
+   .add-faculty-page h1 {
+  font-size: 25px;
+  color: #025712;
+  margin-bottom: 10px;
+  position: relative;
+  left: 0%;
+}
+.add-faculty-subtext{
+  font-size: 14px;
+  margin: 0 auto 35px; 
+  width: 500px;
+  color: #1f1d1d;
+  margin-bottom: 60px;
+  line-height: 1.6;
+  position: relative;
+  left: 0%;
+}
+
+}
+
+
+@media screen and (max-width: 768px) {
+
+
+   .add-faculty-page{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+   }
+
+   
+  .add-faculty-page h1 {
+  font-size: 20px;
+  color: #025712;
+  margin-bottom: 10px;
+  position: relative;
+  left: 6.5%;
+  }
+
+.add-faculty-subtext{
+  font-size: 11px;
+  margin: 0 auto 35px; 
+  width: 200px;
+  color: #1f1d1d;
+  margin-bottom: 60px;
+  line-height: 1.6;
+  position: relative;
+  left: 0%;
+}
+
+ 
+ 
+
+  .add-faculty-form {
+    width: 150%;
+    padding: 25px;
+    gap: 1px;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    margin:10px;
+    margin-top: -20px;
+  }
+
+  .add-faculty-form label {
+    font-size: 12px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+  }
+
+  .add-faculty-form input,
+  .add-faculty-form textarea {
+    font-size: 10px;
+    padding: 10px 10px;
+    margin: 5px;
+  }
+
+  .add-faculty-form textarea {
+    min-height: 80px;
+  }
+
+  .add-faculty-form button {
+    font-size: 15px;
+    padding: 12px;
+    margin-top: 15px;
+    width: 108%;
+    
+  }
+}
+ 
+
+
+
+
+
+
+/* ______________________________________________________________________________________________________________________________________ */
 
 
 .map-container {
@@ -2573,4 +2911,450 @@ blockquote:hover {
 
 .map-link:hover {
   background-color: #0055cc;
+}
+
+
+
+
+
+
+
+/* ____________________________________________________________________________________________________________________________________________ */
+
+
+
+.form-box{
+  padding-top: 100px;
+}
+
+
+
+/* _______________________________________________________________________________________________________________________________________________ */
+
+.faculty-page-container {
+  display: flex;
+  gap: 30px;
+  padding: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap; /* for responsiveness */
+  background-color: #f0f8ff;
+}
+
+.faculty-left, .faculty-right {
+  flex: 1;
+  min-width: 500px;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+  .faculty-page-container {
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+  }
+
+  .faculty-left,
+  .faculty-right {
+    width: 100%;
+    padding: 0 10px;
+  }
+}
+
+
+
+
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .faculty-page-container {
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+  }
+
+  .faculty-left,
+  .faculty-right {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+
+
+
+
+/* __________________________________________________________________________________________________________ */
+
+
+
+
+
+.faculty2-table-page {
+  padding: 80px 20px;
+  /* background: linear-gradient(to right, #f9f9f9, #e6f2ff); */
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+}
+
+.faculty2-title {
+  font-size: 23px;
+  font-weight: bold;
+  color: #004080;
+  margin-bottom: 10px;
+  margin-top: 90px;
+}
+
+.faculty2-subtext {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.faculty2-table-container {
+  max-width: 650px;
+  margin: auto;
+  display: grid;
+  gap: 5px;
+  margin-top: 200px;
+}
+
+.faculty2-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  background-color: white;
+  /* padding: 5px 1px; */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: 0.3s ease;
+  align-items: center;
+  color: black;
+}
+
+
+.faculty-header {
+  background-color: #0c63e4;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  text-transform: uppercase;
+  box-shadow: none;
+}
+
+
+.faculty2-row div {
+  padding: 5px 5px;
+  font-size: 14px;
+  word-break: break-word;
+}
+
+
+
+
+.faculty2-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.faculty2-row input {
+  width: 100%;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+}
+
+.action-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.edit-icon,
+.delete-icon {
+  cursor: pointer;
+  font-size: 15px;
+  transition: transform 0.2s ease;
+}
+
+.edit-icon:hover {
+  color: #01920b;
+  transform: scale(1.1);
+}
+
+.delete-icon:hover {
+  color: red;
+  transform: scale(1.1);
+}
+
+.edit-icon{
+  color: #0c63e4;
+}
+.delete-icon{
+  color:#0c63e4;
+}
+
+.save-btn {
+  padding: 5px 10px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+
+
+/* Tablet and Mobile View */
+@media screen and (max-width: 768px) {
+  .faculty-page-container {
+    flex-direction: column;
+    align-items: center;
+    /* padding: 20px; */
+  }
+
+  .faculty-left,
+  .faculty-right {
+    width: 50%;
+    min-width: unset;
+    padding: 0 10px;
+  }
+
+  .faculty2-table-container {
+    margin-top: -60px;
+    max-width: 100%;
+    padding: 0 10px;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .faculty2-row {
+    grid-template-columns: repeat(5, 1fr);
+    text-align: center;
+    padding: 15px 10px;
+    width: 280px;
+    /* left: 7px; */
+    position: relative;
+    
+
+  }
+
+  .faculty2-row div {
+    font-size: 12px;
+  }
+
+  .faculty2-title,
+  .faculty2-subtext {
+    margin-top: 20px;
+  }
+}
+
+
+
+
+@media (min-width: 768px) and ( max-width: 1024px){
+
+.faculty2-table-page {
+  padding: 80px 20px;
+  /* background: linear-gradient(to right, #f9f9f9, #e6f2ff); */
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  margin-top: -220px;
+}
+
+.faculty2-title {
+  font-size: 21px;
+  font-weight: bold;
+  color: #004080;
+  margin-bottom: 10px;
+  margin-top: 90px;
+}
+
+.faculty2-subtext {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.faculty2-table-container {
+  max-width: 600px;
+  margin: auto;
+  display: grid;
+  gap: 5px;
+  margin-top: 200px;
+}
+
+.faculty2-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  background-color: white;
+  /* padding: 5px 1px; */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: 0.3s ease;
+  align-items: center;
+  color: black;
+}
+
+
+.faculty-header {
+  background-color: #0c63e4;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  text-transform: uppercase;
+  box-shadow: none;
+}
+
+
+.faculty2-row div {
+  padding: 5px 5px;
+  font-size: 13px;
+  word-break: break-word;
+}
+
+
+
+.faculty2-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.faculty2-row input {
+  width: 100%;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+}
+
+.action-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.edit-icon,
+.delete-icon {
+  cursor: pointer;
+  font-size: 15px;
+  transition: transform 0.2s ease;
+}
+
+.edit-icon:hover {
+  color: #01920b;
+  transform: scale(1.1);
+}
+
+.delete-icon:hover {
+  color: red;
+  transform: scale(1.1);
+}
+
+.edit-icon{
+  color: #0c63e4;
+}
+.delete-icon{
+  color:#0c63e4;
+}
+
+.save-btn {
+  padding: 5px 10px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+}
+
+
+
+/* ____________________________________________________________________________________________________________________________ */
+
+
+
+
+/* Base styling */
+.form-box {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #f0f8ff, #e6e6fa);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+}
+
+.form-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-box input {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.form-box input:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+.form-box button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form-box button:hover {
+  background-color: #357ABD;
+}
+
+.form-box p {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Mobile-first design (default is mobile) */
+
+/* Tablet view */
+@media (min-width: 600px) {
+  .form-box {
+    max-width: 500px;
+    padding: 40px;
+  }
+}
+
+/* Desktop view */
+@media (min-width: 1024px) {
+  .form-box {
+    max-width: 600px;
+    padding: 50px;
+  }
 }
