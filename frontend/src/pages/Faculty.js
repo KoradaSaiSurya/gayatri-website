@@ -6,19 +6,55 @@ const Faculty = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem("facultyList")) || [];
-    setFacultyList(storedData);
+    // ✅ Set sample faculty data if not already present
+    const existing = JSON.parse(localStorage.getItem("facultyList"));
+    if (!existing || existing.length === 0) {
+      const sampleFaculty = [
+        {
+          facultyName: "Mr. Rama Krishna",
+          subjectName: "Mathematics",
+          qualification: "M.Sc, B.Ed",
+          experience: "12 Years"
+        },
+        {
+          facultyName: "Ms. Sravani Devi",
+          subjectName: "Science",
+          qualification: "M.Sc, B.Ed",
+          experience: "10 Years"
+        },
+        {
+          facultyName: "Mr. Venkat Rao",
+          subjectName: "English",
+          qualification: "M.A, B.Ed",
+          experience: "9 Years"
+        },
+        {
+          facultyName: "Ms. Anjali Kumari",
+          subjectName: "Computer Science",
+          qualification: "M.Tech",
+          experience: "8 Years"
+        },
+        {
+          facultyName: "Mr. Ajay Varma",
+          subjectName: "Physics",
+          qualification: "M.Sc, B.Ed",
+          experience: "11 Years"
+        }
+      ];
+      localStorage.setItem("facultyList", JSON.stringify(sampleFaculty));
+      setFacultyList(sampleFaculty);
+    } else {
+      setFacultyList(existing);
+    }
   }, []);
 
   const handleAddFacultyClick = () => {
-    const token = localStorage.getItem("token");
-    const email = localStorage.getItem("email");
-
-    if (token && email === "admin@gayatri.com") {
-      navigate('/faculty/add');
-    } else {
-      navigate('/login');
-    }
+    // Logout logic
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
+    localStorage.removeItem("username");
+    localStorage.removeItem("isFacultyAdmin");
+    navigate('/login');
   };
 
   return (
@@ -39,7 +75,6 @@ const Faculty = () => {
           <div>Qualification</div>
           <div>Experience</div>
         </div>
-
         {facultyList.map((f, index) => (
           <div className="faculty-row" key={index}>
             <div>{index + 1}</div>
@@ -55,7 +90,7 @@ const Faculty = () => {
       <div className="faculty-cards-mobile">
         {facultyList.map((f, index) => (
           <div key={index} className="faculty-card">
-            <p><strong>Name: </strong> {f.facultyName}</p>
+            <p><strong>Name:</strong> {f.facultyName}</p>
             <p><strong>Subject:</strong> {f.subjectName}</p>
             <p><strong>Qualification:</strong> {f.qualification}</p>
             <p><strong>Experience:</strong> {f.experience}</p>

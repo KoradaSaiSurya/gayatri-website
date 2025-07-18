@@ -9,12 +9,16 @@ function Login() {
   const { user, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // ✅ Redirect if already logged in
-  useEffect(() => {
-    if (user?.token) {
-      navigate('/faculty/add'); // 👉 change this route as needed
-    }
-  }, [user, navigate]);
+ useEffect(() => {
+  if (user?.token) {
+    const timeout = setTimeout(() => {
+      navigate('/faculty/add');
+    }, 100); // wait 100ms before navigating
+
+    return () => clearTimeout(timeout); // cleanup
+  }
+}, [user, navigate]);
+
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -50,6 +54,7 @@ function Login() {
   };
 
   return (
+    <section className='login'> 
     <div className="form-box">
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
@@ -59,6 +64,7 @@ function Login() {
       </form>
       {msg && <p>{msg}</p>}
     </div>
+    </section>
   );
 }
 

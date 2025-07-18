@@ -2434,165 +2434,106 @@ blockquote:hover {
 
 /* ______________________________________________________________________________________ */
 
-
-.faculty-cards-mobile {
-  display: none;
-}
-
 .faculty-table-page {
-  padding: 60px 15px;
-  background: linear-gradient(to right, #f7faff, #eaf4ff);
-  font-family: 'Segoe UI', sans-serif;
-  text-align: center;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .faculty-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #004080;
-  margin-bottom: 8px;
-  margin-top: 100px;
-}
-
-.faculty-title:hover{
-  color: #0470db;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  color: #2b4c9a;
+  margin-bottom: 0.5rem;
+  margin-top: 130px;
 }
 
 .faculty-subtext {
-  font-size: 15px;
-  color: #444;
-  margin-bottom: 25px;
+  text-align: center;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
 }
 
+/* Desktop Table */
 .faculty-table-container {
-  max-width: 900px;
-  margin: auto;
-  display: grid;
-  gap: 10px;
+  display: none;
+  width: 1200px;
 }
 
 .faculty-row {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* changed to 4 columns */
-  background-color: #fff;
-  padding: 12px 8px;
-  border-radius: 8px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
-  transition: transform 0.3s ease;
+  /* grid-template-columns: repeat(5, 1fr); */
+  grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr;;
+  gap: 2rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
   align-items: center;
 }
 
-.faculty-row:hover {
-  background: #e6f2ff;
-  transform: translateY(-2px);
-}
-
 .faculty-header {
-  background-color: #004080;
-  color: white;
+  background-color: #f0f0f0;
   font-weight: bold;
-  text-transform: uppercase;
-  box-shadow: none;
 }
 
-.faculty-header:hover{
-  background-color: #004080;
+/* Mobile Cards */
+.faculty-cards-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-
-
-.faculty-row div {
-  padding: 6px 10px;
-  font-size: 16px;
-  word-break: break-word;
+.faculty-card {
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-left: 3px solid #0077cc;
 }
 
-/* Button Style */
-.faculty-btn {
-  background-color: #004080;
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  font-size: 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.3s ease;
+.faculty-card p {
+  margin: 0.5rem 0px;
+  font-size: 12px;
 }
 
-.faculty-btn:hover {
-  background-color: #002f5f;
+.faculty-card strong {
+  display: inline-block;
+  width: 110px;
+  color: #333;
 }
-@media screen and (max-width: 768px) {
-  .faculty-header,
-  .faculty-row {
-    display: none;
+
+@media screen and (max-width: 768px){
+  .faculty-title{
+    font-size: 1.2rem;
+    margin-top: 90px;
+  }
+
+  .faculty-subtext{
+    font-size: 0.7rem;
+  }
+}
+
+/* Show table on desktop only */
+@media (min-width: 768px) {
+  .faculty-table-container {
+    display: block;
+    width: 800px;
   }
 
   .faculty-cards-mobile {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    padding: 25px;
+    display: none;
   }
 
-  .faculty-card {
-    background: linear-gradient(to right, #f8fbff, #edf4ff);
-    border-left: 4px solid #004080;
-    border-radius: 12px;
-    padding: 16px 18px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    transition: transform 0.2s ease;
-  }
 
-  .faculty-card:hover {
-    transform: translateY(-3px);
-  }
 
-  .faculty-card p {
-    display: flex;
-    /* justify-content: space-around; */
-    text-align: left;
-    margin: 6px 0;
-    font-size: 12px;
-    font-weight: 500;
-    color: #333;
-  }
 
-  .faculty-card p strong {
-    color: #004080;
-    font-weight: 600;
-    width: 120px;
-  }
-
-  .faculty-title {
-    font-size: 24px;
-    margin-top: 60px;
-    color: #004080;
-  }
-
-  .faculty-subtext {
-    font-size: 12px;
-    margin-bottom: 20px;
-    color: #444;
-  }
-
-  .faculty-btn {
-    font-size: 14px;
-    padding: 10px 18px;
-    background-color: #004080;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    margin-top: 16px;
-    cursor: pointer;
-  }
-
-  .faculty-btn:hover {
-    background-color: #003060;
-  }
+  
 }
-
-
 
 
 /* ______________________________________________________________________________________________________________________________________ */
@@ -3111,12 +3052,13 @@ blockquote:hover {
 
 
 
+
+
 /* Tablet and Mobile View */
 @media screen and (max-width: 768px) {
   .faculty-page-container {
     flex-direction: column;
     align-items: center;
-    /* padding: 20px; */
   }
 
   .faculty-left,
@@ -3140,7 +3082,6 @@ blockquote:hover {
     text-align: center;
     padding: 15px 10px;
     width: 280px;
-    /* left: 7px; */
     position: relative;
     
 
@@ -3155,7 +3096,7 @@ blockquote:hover {
     margin-top: 20px;
   }
 }
-
+ 
 
 
 
@@ -3163,7 +3104,6 @@ blockquote:hover {
 
 .faculty2-table-page {
   padding: 80px 20px;
-  /* background: linear-gradient(to right, #f9f9f9, #e6f2ff); */
   font-family: 'Segoe UI', sans-serif;
   text-align: center;
   margin-top: -220px;
@@ -3189,13 +3129,12 @@ blockquote:hover {
   display: grid;
   gap: 5px;
   margin-top: 200px;
-}
-
+} 
+ 
 .faculty2-row {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  background-color: white;
-  /* padding: 5px 1px; */
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   transition: 0.3s ease;
@@ -3277,7 +3216,7 @@ blockquote:hover {
   cursor: pointer;
 }
 
-}
+} 
 
 
 
@@ -3285,16 +3224,25 @@ blockquote:hover {
 
 
 
+.login {
+  padding-top: 50px;
+  height: 90vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
 
-/* Base styling */
 .form-box {
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 30px 20px;
-  background: linear-gradient(135deg, #f0f8ff, #e6e6fa);
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: 0.3s ease;
+
+  background-color: #ffffff;
+  width: 350px;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+   transition: 0.3s ease;
+
 }
 
 .form-box h2 {
@@ -3304,35 +3252,51 @@ blockquote:hover {
 }
 
 .form-box input {
-  display: block;
-  width: 100%;
-  padding: 12px 16px;
-  margin-bottom: 16px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
+
+
+  width: 93%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
   font-size: 16px;
-  transition: 0.3s;
+  
+
 }
 
 .form-box input:focus {
-  border-color: #4a90e2;
+  border-color: #1976d2;
   outline: none;
+  background-color: #e3f2fd;
 }
 
 .form-box button {
+
   width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+
+  /* width: 100%;
   padding: 12px;
-  background-color: #4a90e2;
+  background-color: #1976d2;
   color: white;
   border: none;
   font-size: 18px;
   border-radius: 10px;
   cursor: pointer;
   transition: 0.3s;
+  font-weight: bold; */
 }
 
 .form-box button:hover {
-  background-color: #357ABD;
+  background-color: #45a049;
 }
 
 .form-box p {
@@ -3341,12 +3305,35 @@ blockquote:hover {
   text-align: center;
 }
 
-/* Mobile-first design (default is mobile) */
+/* Mobile-first design (already applied) */
+@media (max-width: 768px) {
+  .form-box {
+    width: 60%;
+    padding: 30px 30px;
+  }
+
+  .form-box input,
+  .form-box button {
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 3px;
+  }
+  .form-box input{
+    width: 196px;
+  }
+   .form-box button{
+    margin-top: 10px;
+   }
+
+  .form-box h2 {
+    font-size: 22px;
+  }
+}
 
 /* Tablet view */
 @media (min-width: 600px) {
   .form-box {
-    max-width: 500px;
+    max-width: 450px;
     padding: 40px;
   }
 }
@@ -3354,7 +3341,51 @@ blockquote:hover {
 /* Desktop view */
 @media (min-width: 1024px) {
   .form-box {
-    max-width: 600px;
+    max-width: 500px;
     padding: 50px;
   }
+}
+
+
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+.back-button-container {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .back-button-container{
+    display: block;
+   
+  }
+  .back-button{
+    margin-top: -100px;
+  }
+
+}
+
+/* Desktop view */
+@media (min-width: 1024px) {
+ .back-button-container{
+  display: block;
+ }
 }

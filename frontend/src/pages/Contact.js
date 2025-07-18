@@ -37,7 +37,8 @@ function Contact() {
 
 
 
-     setAlertMsg(res.data.message );
+    setAlertMsg(res.data?.message || "✅ Message sent successfully.");
+
     setAlertType("success");
 
     setForm({name:'', email: '', message: ''});
