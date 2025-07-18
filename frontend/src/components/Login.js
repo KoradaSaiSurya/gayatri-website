@@ -12,7 +12,7 @@ function Login() {
  useEffect(() => {
   if (user?.token) {
     const timeout = setTimeout(() => {
-      navigate('/facultyPage');
+      navigate('/faculty/add');
     }, 100); // wait 100ms before navigating
 
     return () => clearTimeout(timeout); // cleanup
@@ -27,31 +27,43 @@ function Login() {
   const adminEmail = "admin@gayathri.com";
 
   const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", form);
+  e.preventDefault();
+  try {
+    const res = await axios.post("https://gayatri-backend.onrender.com/api/auth/login", form, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      withCredentials: true
+    });
 
-      if (res.data.email !== adminEmail) {
-        return setMsg("Only admin can login!");
-      }
-
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("username", res.data.username);
-      localStorage.setItem("email", res.data.email);
-      localStorage.setItem("isFacultyAdmin", "true");
-
-      setUser({
-        username: res.data.username,
-        token: res.data.token,
-        email: res.data.email,
-      });
-
-      navigate('/facultyPage'); // handled by useEffect now
-
-    } catch (err) {
-      setMsg(err.response.data.msg);
+    if (!res || !res.data) {
+      return setMsg("Unexpected response from server.");
     }
-  };
+
+    if (res.data.email !== adminEmail) {
+      return setMsg("Only admin can login!");
+    }
+
+    localStorage.setItem("token", res.data.token);
+    localStorage.setItem("username", res.data.username);
+    localStorage.setItem("email", res.data.email);
+    localStorage.setItem("isFacultyAdmin", "true");
+
+    setUser({
+      username: res.data.username,
+      token: res.data.token,
+      email: res.data.email,
+    });
+
+    navigate('/faculty/add'); // handled by useEffect
+
+  } catch (err) {
+    // Safely read error message
+    const errorMessage = err?.response?.data?.msg || "Login failed. Please try again.";
+    setMsg(errorMessage);
+  }
+};
+
 
   return (
     <section className='login'> 

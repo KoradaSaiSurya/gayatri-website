@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
@@ -20,22 +18,27 @@ const allowedOrigins = [
 
 
 // ✅ CORS Setup
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    credentials: true,
-  })
-);
 
-app.use(cors());
+const corsOptions = {
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      'http://localhost:3000',
+      'https://gayatri-frontend.onrender.com',
+      'https://gayatri-website.vercel.app'
+    ];
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
+
 
 
 
@@ -60,6 +63,7 @@ app.get("/api/test", (req, res) => {
 app.get('/', (req, res) => {
   res.send('🚀 Gayatri Website Backend is Live!');
 });
+
 
 
 // ✅ Contact form
@@ -130,14 +134,6 @@ app.post('/admission-form', async (req, res) => {
     console.error('❌ Admission form error:', err);
     res.status(500).json({ success: false, message: 'Failed to send admission form.' });
   }
-});
-
-
-
-  
-
-app.get('/', (req, res) => {
-  res.send('✅ Server is running');
 });
 
 // ✅ Invalid routes handler
