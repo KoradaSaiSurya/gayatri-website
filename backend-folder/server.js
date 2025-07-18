@@ -5,6 +5,8 @@ const cors = require('cors');
 require('dotenv').config();
 const mongoose =require('mongoose')
 const authRoutes =require('./routes/authRoutes')
+const nodemailer = require("nodemailer");
+
 
 const app = express();
 
@@ -13,7 +15,7 @@ const allowedOrigins = [
   'http://localhost:3000',
   'https://gayatri-website.vercel.app',
   'https://gayatri-frontend.onrender.com',
-  'https://gayathri-website-tuni.vercel.app',
+  // 'https://gayathri-website-tuni.vercel.app',
 ];
 
 
@@ -61,37 +63,34 @@ app.get('/', (req, res) => {
 
 
 // ✅ Contact form
-app.post('/send-message', async (req, res) => {
-  const { name, email, message } = req.body;
+// ✅ Example in server.js
+app.post("/send-message", async (req, res) => {
   try {
+    const { name, email, message } = req.body;
+
+    // Setup nodemailer transport
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
+        user: process.env.EMAIL,
+        pass: process.env.EMAIL_PASSWORD
+      }
     });
 
-   const mailOptions = {
-  from: process.env.EMAIL_USER,
-  to: process.env.EMAIL_USER,
-  subject: `New Message from ${name}`,
-  html: `
-    <h2>New Message</h2>
-    <p><strong>Name:</strong> ${name}</p>
-    <p><strong>Email:</strong> ${email}</p>
-    <p><strong>Message:</strong> ${message}</p>
-  `,
-};
+    await transporter.sendMail({
+      from: email,
+      to: process.env.EMAIL, // receiver email
+      subject: `New Contact Message from ${name}`,
+      text: message
+    });
 
-
-    await transporter.sendMail(mailOptions);
-    res.json({ success: true, message: 'Message sent successfully!' });
+    res.status(200).json({ message: "Message sent successfully" });
   } catch (err) {
-    console.error('❌ Contact form error:', err);
-    res.status(500).json({ success: false, message: 'Failed to send message.' });
+    console.error("Error sending message:", err);
+    res.status(500).json({ error: "Failed to send message" });
   }
-})
+});
+
 
 
 

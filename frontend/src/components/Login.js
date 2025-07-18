@@ -12,7 +12,7 @@ function Login() {
  useEffect(() => {
   if (user?.token) {
     const timeout = setTimeout(() => {
-      navigate('/faculty/add');
+      navigate('/facultyPage');
     }, 100); // wait 100ms before navigating
 
     return () => clearTimeout(timeout); // cleanup
@@ -46,7 +46,7 @@ function Login() {
         email: res.data.email,
       });
 
-      navigate('/faculty/add'); // handled by useEffect now
+      navigate('/facultyPage'); // handled by useEffect now
 
     } catch (err) {
       setMsg(err.response.data.msg);
