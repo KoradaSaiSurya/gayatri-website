@@ -4,6 +4,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
 const nodemailer = require("nodemailer");
+const facultyRoutes = require('./routes/facultyRoutes');
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
+app.use('/api/faculty', facultyRoutes);
 
 // ✅ MongoDB Connection
 mongoose

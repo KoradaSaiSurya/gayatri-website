@@ -52,5 +52,24 @@ router.post("/login", async (req, res) => {
   });
 });
 
+router.get("/", async (req, res) => {
+  try {
+    const data = await Faculty.find();
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch faculty" });
+  }
+});
+
+// POST add faculty
+router.post("/", async (req, res) => {
+  try {
+    const faculty = new Faculty(req.body);
+    await faculty.save();
+    res.status(201).json({ success: true, message: "Faculty added" });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to add faculty" });
+  }
+});
 
 module.exports = router;

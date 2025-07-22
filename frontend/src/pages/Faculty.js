@@ -1,65 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Faculty = () => {
   const [facultyList, setFacultyList] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    // ✅ Set sample faculty data if not already present
-    const existing = JSON.parse(localStorage.getItem("facultyList"));
-    if (!existing || existing.length === 0) {
-      const sampleFaculty = [
-        {
-          facultyName: "Mr. Rama Krishna",
-          subjectName: "Mathematics",
-          qualification: "M.Sc, B.Ed",
-          experience: "12 Years"
-        },
-        {
-          facultyName: "Ms. Sravani Devi",
-          subjectName: "Science",
-          qualification: "M.Sc, B.Ed",
-          experience: "10 Years"
-        },
-        {
-          facultyName: "Mr. Venkat Rao",
-          subjectName: "English",
-          qualification: "M.A, B.Ed",
-          experience: "9 Years"
-        },
-        {
-          facultyName: "Ms. Anjali Kumari",
-          subjectName: "Computer Science",
-          qualification: "M.Tech",
-          experience: "8 Years"
-        },
-        {
-          facultyName: "Mr. Ajay Varma",
-          subjectName: "Physics",
-          qualification: "M.Sc, B.Ed",
-          experience: "11 Years"
-        }
-      ];
-      localStorage.setItem("facultyList", JSON.stringify(sampleFaculty));
-      setFacultyList(sampleFaculty);
-    } else {
-      setFacultyList(existing);
-    }
-  }, []);
+    const fetchFaculty = async () => {
+      try {
+        const res = await axios.get('https://gayatri-backend.onrender.com/api/faculty/all');
+        setFacultyList(res.data);
+      } catch (error) {
+        console.error('Error fetching faculty data:', error);
+      }
+    };
 
-  const handleAddFacultyClick = () => {
-    // Logout logic
-    localStorage.removeItem("token");
-    localStorage.removeItem("email");
-    localStorage.removeItem("username");
-    localStorage.removeItem("isFacultyAdmin");
-    navigate('/login');
-  };
+    fetchFaculty();
+  }, []);
 
   return (
     <div className="faculty-table-page">
-      <h1 className="faculty-title" onClick={handleAddFacultyClick}>
+      <h1 className="faculty-title">
         🎓 Meet Our Faculty
       </h1>
       <p className="faculty-subtext">
