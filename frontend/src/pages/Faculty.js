@@ -1,25 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Faculty = () => {
   const [facultyList, setFacultyList] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchFaculty = async () => {
-      try {
-        const res = await axios.get('https://gayatri-backend.onrender.com/api/faculty/all');
-        setFacultyList(res.data);
-      } catch (error) {
-        console.error('Error fetching faculty data:', error);
-      }
-    };
+  fetch("https://your-backend.com/api/faculty")
+    .then(res => res.json())
+    .then(data => setFacultyList(data))
+    .catch(err => console.error(err));
+}, []);
 
-    fetchFaculty();
-  }, []);
+
+  const handleAddFacultyClick = () => {
+    // Logout logic
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
+    localStorage.removeItem("username");
+    localStorage.removeItem("isFacultyAdmin");
+    navigate('/login');
+  };
 
   return (
     <div className="faculty-table-page">
-       <h1 className="faculty-title" onClick={handleAddFacultyClick}>
+      <h1 className="faculty-title" onClick={handleAddFacultyClick}>
         🎓 Meet Our Faculty
       </h1>
       <p className="faculty-subtext">
@@ -62,7 +67,3 @@ const Faculty = () => {
 };
 
 export default Faculty;
-
-
-
-
