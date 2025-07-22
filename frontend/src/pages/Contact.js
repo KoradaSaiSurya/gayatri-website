@@ -13,40 +13,43 @@ function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-     useEffect(() => {
-          if (alertMsg) {
-              const timer = setTimeout(() => {
-              setAlertMsg('');
-              setAlertType('');
-              }, 5000); // 3 seconds lo hide avuthundhi
-  
-              return () => clearTimeout(timer); // cleanup
-          }
-          }, [alertMsg]);
+        useEffect(() => {
+             if (alertMsg) {
+                 const timer = setTimeout(() => {
+                 setAlertMsg('');
+                 setAlertType('');
+                 }, 5000); // 3 seconds lo hide avuthundhi
+     
+                 return () => clearTimeout(timer); // cleanup
+             }
+             }, [alertMsg]);
 
-
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
-  setAlertMsg("Sending message to Principal...");
+
+  setAlertMsg("Submitting your message...");
   setAlertType("info");
 
   try {
     const res = await axios.post('https://gayatri-backend.onrender.com/send-message', form);
 
-
-
-
-
-     setAlertMsg(res.data.message );
+    setAlertMsg(res.data.message);
     setAlertType("success");
 
-    setForm({name:'', email: '', message: ''});
+    // ✅ Correct reset fields (only name, email, message)
+    setForm({
+      name: '',
+      email: '',
+      message: ''
+    });
+
   } catch (err) {
+    console.log("AXIOS ERROR:", err);
     setAlertMsg("❌ Something went wrong! Please try again.");
     setAlertType("error");
   }
 };
-;
+
   
   return (
     <div className='about'> 
