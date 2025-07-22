@@ -19,7 +19,7 @@ const Faculty = () => {
 
   return (
     <div className="faculty-table-page">
-      <h1 className="faculty-title">
+       <h1 className="faculty-title" onClick={handleAddFacultyClick}>
         🎓 Meet Our Faculty
       </h1>
       <p className="faculty-subtext">
@@ -62,3 +62,7 @@ const Faculty = () => {
 };
 
 export default Faculty;
+
+
+
+
