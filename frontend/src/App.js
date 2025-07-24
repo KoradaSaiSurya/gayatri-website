@@ -16,6 +16,8 @@ import PrivateRoute from './components/PrivateRoute'
 import { AuthProvider } from './context/AuthContext'
 // import Faculty2 from './pages/Faculty2'
 import FacultyPage from './pages/FacultyPage'
+// import { ToastContainer } from 'react-toastify';
+
 
 const App = () => {
   return (
@@ -34,6 +36,8 @@ const App = () => {
 
          <Route path='/faculty' element={<Faculty />} />
          <Route path="/facultyPage" element={<FacultyPage />} />
+         
+{/* <ToastContainer position="top-center" autoClose={2000} /> */}
 
 
 

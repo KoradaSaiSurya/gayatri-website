@@ -2441,6 +2441,7 @@ blockquote:hover {
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: 70vh;
 }
 
 .faculty-title {
@@ -2450,7 +2451,7 @@ blockquote:hover {
   cursor: pointer;
   color: #2b4c9a;
   margin-bottom: 0.5rem;
-  margin-top: 130px;
+  margin-top: 100px;
 }
 
 .faculty-subtext {
@@ -3226,7 +3227,7 @@ blockquote:hover {
 
 .login {
   padding-top: 50px;
-  height: 90vh;
+  height: 70vh;
   justify-content: center;
   align-items: center;
   display: flex;

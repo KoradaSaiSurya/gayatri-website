@@ -1,3 +1,5 @@
+
+
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Faculty2 from './Faculty2';
@@ -40,3 +42,4 @@ const FacultyPage = () => {
 };
 
 export default FacultyPage;
+

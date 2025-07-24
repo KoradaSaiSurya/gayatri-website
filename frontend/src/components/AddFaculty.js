@@ -4,11 +4,12 @@ const AddFaculty = () => {
   const [formData, setFormData] = useState({
     facultyName: '',
     subjectName: '',
-    // department: '',
     qualification: '',
     experience: '',
-    // specialization: ''
   });
+
+  const [alertMsg, setAlertMsg] = useState('');
+  const [alertType, setAlertType] = useState(''); // 'success' or 'error'
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,28 +22,26 @@ const AddFaculty = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    
-
-    // get existing list
     const existing = JSON.parse(localStorage.getItem("facultyList")) || [];
-
-    // add new faculty
     const updated = [...existing, formData];
-
-    // save to localStorage
     localStorage.setItem("facultyList", JSON.stringify(updated));
 
-    // reset form
     setFormData({
       facultyName: '',
       subjectName: '',
-      // department: '',
       qualification: '',
       experience: '',
-      // specialization: ''
     });
 
-    alert("✅ Faculty added successfully!");
+    // Show alert
+    setAlertType('success');
+    setAlertMsg(' Faculty added successfully!');
+
+    // Remove alert after 3 sec
+    setTimeout(() => {
+      setAlertMsg('');
+      setAlertType('');
+    }, 3000);
   };
 
   return (
@@ -52,14 +51,27 @@ const AddFaculty = () => {
         Enter complete details of new faculty members to showcase on the school website.
       </p>
 
+      {/*  Alert Box */}
+      {alertMsg && (
+        <div
+          className={
+            alertType === 'success'
+              ? 'alert-success'
+              : alertType === 'error'
+              ? 'alert-error'
+              : 'alert-submitting'
+          }
+        >
+          {alertType === 'info' && <span className="loader"></span>}
+          {alertMsg}
+        </div>
+      )}
+
       <form className="add-faculty-form" onSubmit={handleSubmit}>
-        {/* <h2 className="add-faculty-form-title">Faculty Details</h2> */}
         <input name="facultyName" type="text" placeholder="Faculty's Name" value={formData.facultyName} onChange={handleChange} required />
         <input name="subjectName" type="text" placeholder="Subject Name" value={formData.subjectName} onChange={handleChange} required />
-        {/* <input name="department" type="text" placeholder="Department" value={formData.department} onChange={handleChange} required /> */}
         <input name="qualification" type="text" placeholder="Qualification" value={formData.qualification} onChange={handleChange} required />
         <input name="experience" type="text" placeholder="Experience" value={formData.experience} onChange={handleChange} required />
-        {/* <input name="specialization" type="text" placeholder="Specialization" value={formData.specialization} onChange={handleChange} /> */}
 
         <button type="submit">Add Faculty</button>
       </form>
@@ -68,3 +80,5 @@ const AddFaculty = () => {
 };
 
 export default AddFaculty;
+
+
