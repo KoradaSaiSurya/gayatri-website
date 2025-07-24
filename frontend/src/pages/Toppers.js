@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 
 const toppers = [
   {
-    name: 'Sai Surya',
+    name: 'JayaSri',
     image: 'my--image.jpg',
     gpa: '10/10',
     rank: '1st',
   },
   {
-    name: 'Anusha Reddy',
+    name: 'Karporam',
     image: 'my--image.jpg',
     gpa: '9.8/10',
     rank: '2nd',
