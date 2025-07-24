@@ -2441,9 +2441,11 @@ blockquote:hover {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 70vh;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
+/* Title */
 .faculty-title {
   font-size: 2rem;
   font-weight: bold;
@@ -2461,20 +2463,22 @@ blockquote:hover {
   margin-bottom: 2rem;
 }
 
-/* Desktop Table */
+/* ---------------- TABLE ---------------- */
 .faculty-table-container {
   display: none;
-  width: 1200px;
+  max-width: 100%;
+  overflow-x: auto;
+  margin-bottom: 2rem;
 }
 
 .faculty-row {
   display: grid;
-  /* grid-template-columns: repeat(5, 1fr); */
-  grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr;;
-  gap: 2rem;
+  grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr;
+  gap: 1.5rem;
   padding: 0.75rem 1rem;
   border: 1px solid #ddd;
   align-items: center;
+  background: #fff;
 }
 
 .faculty-header {
@@ -2482,11 +2486,13 @@ blockquote:hover {
   font-weight: bold;
 }
 
-/* Mobile Cards */
+/* ---------------- CARDS ---------------- */
 .faculty-cards-mobile {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 500px;
 }
 
 .faculty-card {
@@ -2494,12 +2500,14 @@ blockquote:hover {
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  border-left: 3px solid #0077cc;
+  border-left: 4px solid #0077cc;
 }
 
 .faculty-card p {
-  margin: 0.5rem 0px;
-  font-size: 12px;
+  margin: 0.5rem 0;
+  font-size: 13px;
+  position: relative;
+  left: 25px;
 }
 
 .faculty-card strong {
@@ -2508,33 +2516,57 @@ blockquote:hover {
   color: #333;
 }
 
-@media screen and (max-width: 768px){
-  .faculty-title{
-    font-size: 1.2rem;
-    margin-top: 90px;
+/* ---------------- MOBILE ---------------- */
+@media screen and (max-width: 768px) {
+
+  
+  .faculty-title {
+    font-size: 1.4rem;
+    margin-top: 100px;
   }
 
-  .faculty-subtext{
+  .faculty-subtext {
     font-size: 0.7rem;
+  }
+
+  .faculty-row {
+    font-size: 12px;
+    gap: 0.5rem;
   }
 }
 
-/* Show table on desktop only */
-@media (min-width: 768px) {
+/* ---------------- TABLET ---------------- */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .faculty-title {
+    font-size: 1.8rem;
+  }
+
+  .faculty-subtext {
+    font-size: 0.95rem;
+  }
+
   .faculty-table-container {
     display: block;
-    width: 800px;
+    width: 90%;
   }
 
   .faculty-cards-mobile {
     display: none;
   }
-
-
-
-
-  
 }
+
+/* ---------------- DESKTOP ---------------- */
+@media screen and (min-width: 1024px) {
+  .faculty-table-container {
+    display: block;
+    width: 1200px;
+  }
+
+  .faculty-cards-mobile {
+    display: none;
+  }
+}
+
 
 
 /* ______________________________________________________________________________________________________________________________________ */
