@@ -37,6 +37,17 @@ const Navbar = () => {
           <li> <Link to='/gallery' onClick={() => setIsMobileMenuOpen(false)}> Gallery </Link> </li>
           <li> <Link to='/sports' onClick={() => setIsMobileMenuOpen(false)}> Sports </Link> </li>
           <li> <Link to='/faculty' onClick={() => setIsMobileMenuOpen(false)}> Faculty </Link> </li>
+
+          {/* <li>
+  <div className="dropdown">
+    <button className="dropbtn">Logins ⬇️</button>
+    <div className="dropdown-content">
+      <Link to="/student-login" onClick={() => setIsMobileMenuOpen(false)}>Student Login</Link>
+      <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>Principal Login</Link>
+    </div>
+  </div>
+</li> */}
+
         </ul>
 
         {/* Contact Us + Logout */}

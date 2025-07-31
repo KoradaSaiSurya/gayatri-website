@@ -16,7 +16,10 @@ import PrivateRoute from './components/PrivateRoute'
 import { AuthProvider } from './context/AuthContext'
 // import Faculty2 from './pages/Faculty2'
 import FacultyPage from './pages/FacultyPage'
-// import { ToastContainer } from 'react-toastify';
+// import StudentLogin from './components/StudentLogin'
+// import StudentResults from './pages/StudentResults'
+import { ToastContainer } from 'react-toastify';
+
 
 
 const App = () => {
@@ -36,6 +39,8 @@ const App = () => {
 
          <Route path='/faculty' element={<Faculty />} />
          <Route path="/facultyPage" element={<FacultyPage />} />
+         {/* <Route path="/student-login" element={<StudentLogin />} /> */}
+         {/* <Route path="/student-results" element={<StudentResults />} /> */}
          
 {/* <ToastContainer position="top-center" autoClose={2000} /> */}
 

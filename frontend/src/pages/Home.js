@@ -44,8 +44,6 @@ const announcements = [
       </section>
 
 
-
-
       <section className="leaders">
         <div className="leader-card">
           <img src="/my--image.jpg" alt="Principal" />

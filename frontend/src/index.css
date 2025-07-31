@@ -32,7 +32,7 @@ code {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   z-index: 1000;
   border-radius: 10px;
-  gap: 130px;
+  /* gap: 90px; */
   margin-top: 10px;
 }
 
@@ -3267,7 +3267,7 @@ blockquote:hover {
 }
 
 .form-box {
-
+  /* padding-top: 150px; */
   background-color: #ffffff;
   width: 350px;
   padding: 20px 30px;
@@ -3279,6 +3279,7 @@ blockquote:hover {
 }
 
 .form-box h2 {
+  
   text-align: center;
   margin-bottom: 20px;
   color: #333;
@@ -3382,6 +3383,8 @@ blockquote:hover {
 
 
 
+
+
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 .back-button-container {
@@ -3421,4 +3424,103 @@ blockquote:hover {
  .back-button-container{
   display: block;
  }
+}
+
+
+/* _______________________________________________________________________________________________________________________________ */
+
+.results-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.profile img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.logout-btn {
+  padding: 8px 16px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.progress {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.progress-bar {
+  background-color: #e0e0e0;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background-color: #28a745;
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.results-table th, .results-table td {
+  border: 1px solid #dee2e6;
+  padding: 12px;
+  text-align: center;
+}
+
+.grade {
+  padding: 4px 10px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+}
+
+.grade.A+ { background-color: #4CAF50; }
+.grade.A  { background-color: #28a745; }
+.grade.B  { background-color: #17a2b8; }
+.grade.C  { background-color: #ffc107; }
+.grade.F  { background-color: #dc3545; }
+
+.loading {
+  text-align: center;
+  font-size: 20px;
+  padding: 30px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .results-table th, .results-table td {
+    font-size: 14px;
+    padding: 8px;
+  }
 }

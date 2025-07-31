@@ -41,12 +41,6 @@ const handleSubmit = async (e) => {
     // 2️⃣ Send data to backend
    const res =await axios.post('https://gayatri-backend.onrender.com/admission-form', form);
 
-
-
-
-
-
-
     // 3️⃣ On success, update message
     setAlertMsg(res.data.message );
     setAlertType("success");

@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
 const nodemailer = require("nodemailer");
 const facultyRoutes = require('./routes/facultyRoutes');
+// const studentAuthRoutes = require('./routes/studentAuthRoutes');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use('/api/faculty', facultyRoutes);
+// app.use('/api/student-results', studentAuthRoutes);
 
 // ✅ MongoDB Connection
 mongoose
@@ -115,6 +117,7 @@ app.post('/admission-form', async (req, res) => {
 app.use((req, res) => {
   res.status(404).json({ error: 'Route not found' });
 });
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
