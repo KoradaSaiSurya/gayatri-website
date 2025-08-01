@@ -7,6 +7,17 @@
     const [loading, setLoading] = useState(true); 
 
     useEffect(() => {
+  const token = localStorage.getItem("token");
+  const username = localStorage.getItem("username");
+  const email = localStorage.getItem("email");
+
+  if (token && username && email) {
+    setUser({ token, username, email });
+  }
+
+  setLoading(false);
+}, []);
+useEffect(() => {
       const token = localStorage.getItem("token");
       const username = localStorage.getItem("username");
       if (token && username) {
