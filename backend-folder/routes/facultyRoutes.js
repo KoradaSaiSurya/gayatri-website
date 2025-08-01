@@ -25,24 +25,24 @@
 
 
 
-
 const express = require('express');
 const router = express.Router();
 const Faculty = require('../models/FacultyModel');
 
 // ➕ Add new faculty
-router.post('/submit', async (req, res) => {
+router.post('/', async (req, res) => {
+  const { facultyName, subjectName, qualification, experience } = req.body;
   try {
-    const newFaculty = new Faculty(req.body);
+    const newFaculty = new Faculty({ facultyName, subjectName, qualification, experience });
     await newFaculty.save();
-    res.status(201).json({ message: 'Faculty data saved successfully' });
+    res.status(201).json(newFaculty);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to save faculty data' });
+    res.status(500).json({ error: "Failed to save faculty" });
   }
 });
 
 // 📥 Get all faculty
-router.get('/all', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const allFaculty = await Faculty.find();
     res.status(200).json(allFaculty);
@@ -52,7 +52,7 @@ router.get('/all', async (req, res) => {
 });
 
 // ✏️ Edit faculty
-router.put('/edit/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const updated = await Faculty.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.status(200).json(updated);
@@ -62,7 +62,7 @@ router.put('/edit/:id', async (req, res) => {
 });
 
 // ❌ Delete faculty
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     await Faculty.findByIdAndDelete(req.params.id);
     res.status(200).json({ message: 'Faculty deleted successfully' });

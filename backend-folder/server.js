@@ -35,10 +35,20 @@ app.use('/api/faculty', facultyRoutes);
 // app.use('/api/student-results', studentAuthRoutes);
 
 // ✅ MongoDB Connection
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log('✅ Connected to MongoDB'))
-  .catch((err) => console.error('❌ MongoDB error:', err));
+// mongoose
+//   .connect(process.env.MONGO_URI)
+//   .then(() => console.log('✅ Connected to MongoDB'))
+//   .catch((err) => console.error('❌ MongoDB error:', err));
+  
+
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+mongoose.connection.once("open", () => {
+  console.log("✅ Connected to MongoDB");
+});
 
 // ✅ Test route
 app.get("/api/test", (req, res) => {
