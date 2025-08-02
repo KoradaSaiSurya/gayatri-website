@@ -1722,31 +1722,135 @@ code {
 
 /* ________________________________________________________________________________________________________ */
 
+.footer-container {
+  background-color: #1c1c1e;
+  color: #fff;
+  padding: 40px 20px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
 
-/* Footer */
-.footer {
-  background-color: #222;
-  color: white;
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #f9a825;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #fbc02d;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: #ddd;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #fff;
+}
+
+.social-icons a {
+  color: #fbc02d;
+  font-size: 20px;
+  margin-right: 12px;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
   text-align: center;
-  padding: 25px 15px;
+  margin-top: 30px;
+  border-top: 1px solid #333;
+  padding-top: 15px;
   font-size: 14px;
-  margin-top: 40px;
+  color: #aaa;
 }
 
-@media screen and (max-width: 768px) {
+/* ✅ Responsive Design for Tablet & Mobile */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-links-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 100%;
+  }
+
+  .footer-section {
+    width: 45%;
+    max-width: 200px;
+  }
+
+  .footer-section h3 {
+    font-size: 15px;
+  }
+
+  .footer-section ul li a {
+    font-size: 12px;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-section h2 {
+    font-size: 16px;
+  }
+
+  .footer-section h3 {
+    font-size: 14px;
+  }
+
+  .footer-section ul li a {
+    font-size: 12px;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+  }
+
+  .social-icons a {
+    font-size: 18px;
+  }
   
-  .footer {
-  background-color: #222;
-  color: white;
-  text-align: center;
-  padding: 25px 15px;
-  font-size: 10px;
-  /* margin-top: 40px; */
 }
-
-}
-
-
 
 
 

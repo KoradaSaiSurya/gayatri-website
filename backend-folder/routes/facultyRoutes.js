@@ -1,72 +1,36 @@
-// const express = require('express');
-// const router = express.Router();
-// const Faculty = require('../models/FacultyModel');
-
-// router.post('/submit', async (req, res) => {
-//   try {
-//     const newFaculty = new Faculty(req.body);
-//     await newFaculty.save();
-//     res.status(201).json({ message: 'Faculty data saved successfully' });
-//   } catch (error) {
-//     res.status(500).json({ error: 'Failed to save faculty data' });
-//   }
-// });
-
-// router.get('/all', async (req, res) => {
-//   try {
-//     const allFaculty = await Faculty.find();
-//     res.status(200).json(allFaculty);
-//   } catch (error) {
-//     res.status(500).json({ error: 'Failed to fetch faculty data' });
-//   }
-// });
-
-// module.exports = router;
-
-
-
+// routes/facultyRoutes.js
 const express = require('express');
-const router = express.Router();
 const Faculty = require('../models/FacultyModel');
+const router = express.Router();
 
-// ➕ Add new faculty
-router.post('/', async (req, res) => {
-  const { facultyName, subjectName, qualification, experience } = req.body;
+// 📌 1. Get All Faculty
+router.get('/', async (req, res) => {
   try {
+    const faculty = await Faculty.find();
+    res.json(faculty);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch faculty' });
+  }
+});
+
+// 📌 2. Add New Faculty
+router.post('/', async (req, res) => {
+  try {
+    const { facultyName, subjectName, qualification, experience } = req.body;
     const newFaculty = new Faculty({ facultyName, subjectName, qualification, experience });
     await newFaculty.save();
     res.status(201).json(newFaculty);
-  } catch (error) {
-    res.status(500).json({ error: "Failed to save faculty" });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to add faculty' });
   }
 });
 
-// 📥 Get all faculty
-router.get('/', async (req, res) => {
-  try {
-    const allFaculty = await Faculty.find();
-    res.status(200).json(allFaculty);
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch faculty data' });
-  }
-});
-
-// ✏️ Edit faculty
-router.put('/:id', async (req, res) => {
-  try {
-    const updated = await Faculty.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.status(200).json(updated);
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to update faculty' });
-  }
-});
-
-// ❌ Delete faculty
+// 📌 3. Delete Faculty
 router.delete('/:id', async (req, res) => {
   try {
     await Faculty.findByIdAndDelete(req.params.id);
-    res.status(200).json({ message: 'Faculty deleted successfully' });
-  } catch (error) {
+    res.json({ msg: 'Faculty deleted' });
+  } catch (err) {
     res.status(500).json({ error: 'Failed to delete faculty' });
   }
 });

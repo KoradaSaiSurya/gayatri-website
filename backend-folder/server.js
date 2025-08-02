@@ -1,22 +1,23 @@
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
 const mongoose = require('mongoose');
+const nodemailer = require('nodemailer');
+require('dotenv').config();
+
 const authRoutes = require('./routes/authRoutes');
-const nodemailer = require("nodemailer");
 const facultyRoutes = require('./routes/facultyRoutes');
-// const studentAuthRoutes = require('./routes/studentAuthRoutes');
 
 const app = express();
 
 // ✅ CORS Setup
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://gayatri-frontend.onrender.com',
+  'https://gayatri-website.vercel.app'
+];
+
 const corsOptions = {
   origin: function (origin, callback) {
-    const allowedOrigins = [
-      'http://localhost:3000',
-      'https://gayatri-frontend.onrender.com',
-      'https://gayatri-website.vercel.app'
-    ];
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -30,37 +31,26 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
+// ✅ Routes
 app.use("/api/auth", authRoutes);
 app.use('/api/faculty', facultyRoutes);
-// app.use('/api/student-results', studentAuthRoutes);
 
 // ✅ MongoDB Connection
-// mongoose
-//   .connect(process.env.MONGO_URI)
-//   .then(() => console.log('✅ Connected to MongoDB'))
-//   .catch((err) => console.error('❌ MongoDB error:', err));
-  
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('✅ Connected to MongoDB'))
+  .catch((err) => console.error('❌ MongoDB error:', err));
 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-mongoose.connection.once("open", () => {
-  console.log("✅ Connected to MongoDB");
-});
-
-// ✅ Test route
+// ✅ Test Route
 app.get("/api/test", (req, res) => {
   res.json({ message: 'API working successfully!' });
 });
 
-// ✅ Home route
+// ✅ Home Route
 app.get('/', (req, res) => {
   res.send('🚀 Gayatri Website Backend is Live!');
 });
 
-// ✅ Contact Form
+// ✅ Contact Form Route
 app.post("/send-message", async (req, res) => {
   try {
     const { name, email, message } = req.body;
@@ -87,7 +77,7 @@ app.post("/send-message", async (req, res) => {
   }
 });
 
-// ✅ Admission Form
+// ✅ Admission Form Route
 app.post('/admission-form', async (req, res) => {
   const { studentName, parentName, className, phone, email, message } = req.body;
 
@@ -128,11 +118,15 @@ app.use((req, res) => {
   res.status(404).json({ error: 'Route not found' });
 });
 
-
+// ✅ Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`✅ Server running on http://localhost:${PORT}`);
 });
+
+
+
+
 
 
 

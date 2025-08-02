@@ -9,16 +9,11 @@ import Sports from './pages/Sports'
 import Footer from './pages/Footer'
 import Admission from './pages/Admission'
 import Faculty from './pages/Faculty'
-// import AddFaculty from './components/AddFaculty'
 import Login from './components/Login'
 import Dashboard from './components/Dashboard'
 import PrivateRoute from './components/PrivateRoute'
 import { AuthProvider } from './context/AuthContext'
-// import Faculty2 from './pages/Faculty2'
 import FacultyPage from './pages/FacultyPage'
-// import StudentLogin from './components/StudentLogin'
-// import StudentResults from './pages/StudentResults'
-// import { ToastContainer } from 'react-toastify';
 
 
 
@@ -39,10 +34,6 @@ const App = () => {
 
          <Route path='/faculty' element={<Faculty />} />
          <Route path="/facultyPage" element={<FacultyPage />} />
-         {/* <Route path="/student-login" element={<StudentLogin />} /> */}
-         {/* <Route path="/student-results" element={<StudentResults />} /> */}
-         
-{/* <ToastContainer position="top-center" autoClose={2000} /> */}
 
 
 
