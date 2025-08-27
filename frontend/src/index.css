@@ -2538,138 +2538,357 @@ blockquote:hover {
 
 /* ______________________________________________________________________________________ */
 
-.faculty-table-page {
-  padding: 2rem;
-  font-family: Arial, sans-serif;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+
+
+/* faculty.css */
+
+/* 🌟 Root variables for easy theming */
+:root {
+  --fx-bg: #f5f7fa;
+  --fx-card-bg: rgba(255, 255, 255, 0.85);
+  --fx-primary: #4e9fff;
+  --fx-danger: #ff4d4f;
+  --fx-success: #4caf50;
+  --fx-text: #1e1e1e;
+  --fx-muted: #6b7280;
+  --fx-border: #e5e7eb;
+  --fx-radius: 14px;
+  --fx-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  --fx-glow: 0 0 20px rgba(78, 159, 255, 0.4);
+}
+
+* {
   box-sizing: border-box;
 }
 
-/* Title */
-.faculty-title {
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  cursor: pointer;
-  color: #2b4c9a;
-  margin-bottom: 0.5rem;
-  margin-top: 100px;
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--fx-bg);
+  margin: 0;
+  color: var(--fx-text);
 }
 
-.faculty-subtext {
-  text-align: center;
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 2rem;
+.fx-wrap{
+  padding-top: 100px;
+  height: 100vh;
+
 }
 
-/* ---------------- TABLE ---------------- */
-.faculty-table-container {
-  display: none;
-  max-width: 100%;
-  overflow-x: auto;
-  margin-bottom: 2rem;
-}
-
-.faculty-row {
-  display: grid;
-  grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr;
-  gap: 1.5rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid #ddd;
+/* ---------- HEADER ---------- */
+.fx-header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  background: #fff;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, var(--fx-primary), #8ec5ff);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: var(--fx-shadow);
 }
 
-.faculty-header {
-  background-color: #f0f0f0;
-  font-weight: bold;
+.fx-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
-/* ---------------- CARDS ---------------- */
-.faculty-cards-mobile {
+.fx-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.fx-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--fx-radius);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.fx-btn.primary {
+  background: var(--fx-primary);
+  color: white;
+  box-shadow: var(--fx-shadow);
+}
+
+.fx-btn.primary:hover {
+  box-shadow: var(--fx-glow);
+}
+
+.fx-btn.ghost {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.fx-btn.danger {
+  background: var(--fx-danger);
+  color: white;
+}
+
+.fx-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---------- ALERT ---------- */
+.fx-alert {
+  background: var(--fx-danger);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: var(--fx-radius);
+  margin: 1rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* ---------- CARD ---------- */
+.fx-card {
+  background: var(--fx-card-bg);
+  backdrop-filter: blur(14px);
+  border-radius: var(--fx-radius);
+  box-shadow: var(--fx-shadow);
+  margin: 1rem;
+  padding: 1.25rem;
+  animation: fadeIn 0.5s ease;
+}
+
+.fx-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+/* ---------- FORM ---------- */
+.fx-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.fx-field {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  width: 100%;
-  max-width: 500px;
+  gap: 0.25rem;
 }
 
-.faculty-card {
-  background-color: #f9f9f9;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  border-left: 4px solid #0077cc;
+.fx-label {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--fx-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
-.faculty-card p {
-  margin: 0.5rem 0;
-  font-size: 13px;
-  position: relative;
-  left: 25px;
+.fx-field input {
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--fx-radius);
+  border: 1px solid var(--fx-border);
+  background: white;
+  transition: all 0.2s ease;
 }
 
-.faculty-card strong {
-  display: inline-block;
-  width: 110px;
-  color: #333;
+.fx-field input:focus {
+  border-color: var(--fx-primary);
+  box-shadow: var(--fx-glow);
+  outline: none;
 }
 
-/* ---------------- MOBILE ---------------- */
-@media screen and (max-width: 768px) {
+.fx-form-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
 
-  
-  .faculty-title {
-    font-size: 1.4rem;
-    margin-top: 100px;
+/* ---------- TOOLBAR ---------- */
+.fx-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.fx-search {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: var(--fx-radius);
+  border: 1px solid var(--fx-border);
+  padding: 0.4rem 0.75rem;
+  gap: 0.5rem;
+  flex: 1;
+  max-width: 320px;
+}
+
+.fx-search input {
+  border: none;
+  outline: none;
+  flex: 1;
+}
+
+.fx-chip {
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--fx-radius);
+  background: white;
+  border: 1px solid var(--fx-border);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.fx-chip.active {
+  background: var(--fx-primary);
+  color: white;
+}
+
+/* ---------- LIST GRID ---------- */
+.fx-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.fx-item {
+  background: white;
+  border-radius: var(--fx-radius);
+  box-shadow: var(--fx-shadow);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fx-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--fx-glow);
+}
+
+.fx-avatar {
+  width: 48px;
+  height: 48px;
+  background: var(--fx-primary);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.fx-item-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.fx-item-title {
+  font-weight: 600;
+}
+
+.fx-item-meta {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--fx-muted);
+}
+
+.fx-item-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.fx-icon-btn {
+  background: var(--fx-primary);
+  color: white;
+  border: none;
+  padding: 0.4rem;
+  border-radius: var(--fx-radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fx-icon-btn:hover {
+  background: #3a8be9;
+}
+
+.fx-icon-btn.danger {
+  background: var(--fx-danger);
+}
+
+.fx-icon-btn.danger:hover {
+  background: #d9363e;
+}
+
+/* ---------- SKELETON ---------- */
+.fx-skeleton-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.fx-skeleton-card {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  border-radius: var(--fx-radius);
+  height: 120px;
+  animation: skeleton 1.2s infinite;
+}
+
+@keyframes skeleton {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+/* ---------- EMPTY STATE ---------- */
+.fx-empty {
+  text-align: center;
+  color: var(--fx-muted);
+  padding: 2rem 0;
+  font-weight: 500;
+}
+
+/* ---------- ANIMATIONS ---------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .fx-toolbar {
+    flex-direction: column;
+    align-items: stretch;
   }
-
-  .faculty-subtext {
-    font-size: 0.7rem;
+  .fx-search {
+    max-width: 100%;
   }
+}
 
-  .faculty-row {
-    font-size: 12px;
+@media (max-width: 480px) {
+  .fx-header {
+    flex-direction: column;
+    align-items: flex-start;
     gap: 0.5rem;
   }
 }
 
-/* ---------------- TABLET ---------------- */
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .faculty-title {
-    font-size: 1.8rem;
-  }
 
-  .faculty-subtext {
-    font-size: 0.95rem;
-  }
 
-  .faculty-table-container {
-    display: block;
-    width: 90%;
-  }
+/* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
-  .faculty-cards-mobile {
-    display: none;
-  }
-}
 
-/* ---------------- DESKTOP ---------------- */
-@media screen and (min-width: 1024px) {
-  .faculty-table-container {
-    display: block;
-    width: 1200px;
-  }
 
-  .faculty-cards-mobile {
-    display: none;
-  }
-}
 
 
 

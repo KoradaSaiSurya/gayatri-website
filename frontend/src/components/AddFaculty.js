@@ -81,4 +81,3 @@ const AddFaculty = () => {
 
 export default AddFaculty;
 
-

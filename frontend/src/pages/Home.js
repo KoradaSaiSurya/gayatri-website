@@ -35,7 +35,7 @@ const announcements = [
   return (
     <div className="home">
       <section className="hero">
-        <img className="school-img" src='sri chaitanya school.jpg' alt='img' />
+        <img className="school-img" src='chaitanya-school.jpg' alt='img' />
         <div className="img-text">
           <h1>Welcome To Sri Gayathri School</h1>
           <p>Empowering Young Minds for a Brighter Future</p>

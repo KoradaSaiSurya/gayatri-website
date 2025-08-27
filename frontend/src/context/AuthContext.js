@@ -1,34 +1,28 @@
-  import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
-  export const AuthContext = createContext();
+export const AuthContext = createContext();
 
-  export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true); 
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
 
-    useEffect(() => {
-  const token = localStorage.getItem("token");
-  const username = localStorage.getItem("username");
-  const email = localStorage.getItem("email");
+  useEffect(() => {
+    const savedUser = localStorage.getItem("user");
+    if (savedUser) setUser(JSON.parse(savedUser));
+  }, []);
 
-  if (token && username && email) {
-    setUser({ token, username, email });
-  }
-
-  setLoading(false);
-}, []);
-useEffect(() => {
-      const token = localStorage.getItem("token");
-      const username = localStorage.getItem("username");
-      if (token && username) {
-        setUser({ username, token });
-      }
-      setLoading(false);
-    }, []);
-
-    return (
-      <AuthContext.Provider value={{ user, setUser, loading }}>
-        {children}
-      </AuthContext.Provider>
-    );
+  const login = (userData) => {
+    setUser(userData);
+    localStorage.setItem("user", JSON.stringify(userData));
   };
+
+  const logout = () => {
+    setUser(null);
+    localStorage.removeItem("user");
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
