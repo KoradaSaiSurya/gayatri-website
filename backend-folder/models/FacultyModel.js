@@ -1,18 +1,28 @@
-// models/FacultyModel.js
+// import mongoose from "mongoose";
+
+// const facultySchema = new mongoose.Schema({
+//     name: String,
+//     subject: String,
+//     experience: String,
+//     qualification: String
+// });
+
+// export default mongoose.model("Faculty", facultySchema);
+
+
+
+
+
 const mongoose = require('mongoose');
 
-const FacultySchema = new mongoose.Schema({
-  facultyName: { type: String, required: true },
-  subjectName: { type: String, required: true },
-  qualification: { type: String, required: true },
-  experience: { type: String, required: true }
+const facultySchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    subject: { type: String, required: true },
+    qualification: { type: String, required: true },
+    experience: { type: String, required: true }
 });
 
-module.exports = mongoose.model('Faculty', FacultySchema);
-
-
-
-
+module.exports = mongoose.model('Faculty', facultySchema);
 
 
 // backend ----
