@@ -817,14 +817,13 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
-  /* margin: 40px auto; */
-  max-width: 1200px;
+  gap: 40px;
+  margin: 40px auto;
+  max-width: 300px;
   flex-wrap: wrap;
-  margin: 40px;
-  
   
 }
+
 .why-img{
   height: 110px;
 }
@@ -853,6 +852,9 @@ code {
   margin-bottom: 20px;
   font-size: 10px;
   color: #555;
+}
+.row-reverse{
+  flex-direction: row-reverse;
 }
 
 
@@ -1059,7 +1061,9 @@ code {
   .desktop-view {
     display: none;
   }
-
+  .topper-card{
+    padding-bottom: 250px;
+  }
   .mobile-view {
     display: flex;
     justify-content: center;
@@ -2141,13 +2145,13 @@ blockquote:hover {
   .contact-container {
     flex-direction: column;
     gap: 20px;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     justify-content: center;
     align-items: center;
     display: flex;
-    width: 270px;
+    width: 100%;
 
   }
 
