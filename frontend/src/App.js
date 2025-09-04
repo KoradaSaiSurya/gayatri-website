@@ -13,6 +13,8 @@ import Dashboard from './components/Dashboard'
 import PrivateRoute from './components/PrivateRoute'
 import { AuthProvider } from './context/AuthContext'
 import Faculty from './pages/Faculty'
+import Faculty3 from './pages/Faculty3'
+import FacultyPage from './pages/FacultyPage'
 
 
 
@@ -30,6 +32,8 @@ const App = () => {
           <Route path='/admission' element={<Admission />} />
           <Route path='/login' element={<Login />} />
           <Route path='/faculty' element={<Faculty />} />
+          <Route path='/faculty3' element={<Faculty3 />} />
+          <Route path='/facultyPage' element={<FacultyPage />} />
 
           <Route path='/dashboard' element={<PrivateRoute><Dashboard /></PrivateRoute>} />
 

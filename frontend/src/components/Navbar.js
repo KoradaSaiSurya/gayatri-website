@@ -36,7 +36,7 @@ const Navbar = () => {
           <li> <Link to='/contact' onClick={() => setIsMobileMenuOpen(false)}> Contact </Link> </li>
           <li> <Link to='/gallery' onClick={() => setIsMobileMenuOpen(false)}> Gallery </Link> </li>
           <li> <Link to='/sports' onClick={() => setIsMobileMenuOpen(false)}> Sports </Link> </li>
-          <li> <Link to='/faculty' onClick={() => setIsMobileMenuOpen(false)}> Faculty </Link> </li>
+          <li> <Link to='/faculty3' onClick={() => setIsMobileMenuOpen(false)}> Faculty </Link> </li>
 
           {/* <li>
   <div className="dropdown">
