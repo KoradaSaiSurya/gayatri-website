@@ -3626,7 +3626,7 @@ body {
   position: relative;
 }
 .fx3-title{
-  font-size:20px;
+  font-size:23px;
   letter-spacing:0.6px;
   font-weight:700;
   text-transform: uppercase;          /* you wanted capitals */
@@ -3636,7 +3636,7 @@ body {
   gap:10px;
 }
 /* small decorative underline */
-.fx3-title::after{
+/* .fx3-title::after{
   content: "";
   width: 48px;
   height: 6px;
@@ -3645,7 +3645,7 @@ body {
   background: linear-gradient(90deg,var(--accent1), var(--accent2));
   box-shadow: 0 6px 18px rgba(255,123,0,0.08);
   transform: translateY(2px);
-}
+} */
 
 /* actions cluster */
 .fx3-actions {
@@ -4184,5 +4184,103 @@ body {
   .results-table th, .results-table td {
     font-size: 14px;
     padding: 8px;
+  }
+}
+
+
+
+
+/* ========== Mobile First ========== */
+@media (max-width: 480px) {
+  .fx3-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .fx3-actions {
+    width: 100%;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .fx3-sort {
+    flex: 1;
+    min-width: 140px;
+  }
+
+  .fx3-add {
+    width: 46px;
+    height: 46px;
+    font-size: 24px;
+  }
+
+  .fx3-refresh {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    display: none;
+  }
+
+  .fx3-grid {
+    grid-template-columns: 1fr; /* single column on mobile */
+  }
+
+  .fx3-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .fx3-badge {
+    width: 58px;
+    height: 58px;
+    font-size: 18px;
+  }
+  .fx3-header{
+    margin-top: 60px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+}
+
+/* ========== Tablet View ========== */
+@media (min-width: 481px) and (max-width: 768px) {
+  .fx3-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .fx3-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fx3-badge {
+    width: 64px;
+    height: 64px;
+    font-size: 20px;
+  }
+}
+
+/* ========== Desktop View ========== */
+@media (min-width: 1024px) {
+  .fx3-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .fx3-title {
+    font-size: 24px;
+  }
+
+  .fx3-add {
+    width: 60px;
+    height: 60px;
+    font-size: 32px;
+  }
+
+  .fx3-refresh {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
   }
 }
