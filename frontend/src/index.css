@@ -3616,12 +3616,11 @@ body {
 }
 
 /* Header */
-.fx3-header{
-  display:flex;
-  gap:12px;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:18px;
+.fx3-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* left vs right */
+  margin-bottom: 18px;
   padding: 8px;
   margin-top: 100px;
   position: relative;
@@ -3649,10 +3648,20 @@ body {
 }
 
 /* actions cluster */
-.fx3-actions{
-  display:flex;
-  align-items:center;
-  gap:10px;
+.fx3-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* spacing between sort, refresh, add */
+}
+
+.fx3-sort {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(15, 23, 36, 0.12);
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+  box-shadow: var(--shadow);
 }
 
 /* refresh button */
