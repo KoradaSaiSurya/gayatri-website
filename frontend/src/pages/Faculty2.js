@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const BASE_URL_2 = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000"; // same as Faculty.js
+const BASE_URL_2 = process.env.REACT_APP_API_BASE_URL || "https://gayatri-backend.onrender.com"; 
+
 
 export default function Faculty2() {
   const [list, setList] = useState([]);

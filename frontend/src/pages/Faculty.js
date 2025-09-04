@@ -14,7 +14,8 @@ import {
   FaClock
 } from "react-icons/fa";
 
-const BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000"; // change if needed
+const BASE_URL = process.env.REACT_APP_API_BASE_URL || "https://gayatri-backend.onrender.com"; 
+
 
 const emptyForm = { name: "", subject: "", qualification: "", experience: "" };
 
